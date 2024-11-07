@@ -10,8 +10,7 @@ customElements.define('product-card',
 			const imageValue = this.attributes.image.value
 			const priceValue = this.attributes.price.value
 
-			this.textContent = "Hola"
-			
+			// this.textContent = "Hola"
 			
 			// Inicio de tarjeta de producto
 			const product = document.createElement('div');
@@ -26,9 +25,12 @@ customElements.define('product-card',
       image.src = imageValue;
       image.alt = nameValue;
       header.append(image);
+
+			const buttonContainer = document.createElement('div');
+      buttonContainer.classList.add('absolute', 'flex', 'justify-center', 'bottom-0', 'translate-y-1/2', 'w-full');
       
       const button = document.createElement('button');
-      button.classList.add('absolute', 'flex','items-center', 'bottom-0', 'right-1/2','translate-x-1/2', 'translate-y-1/2', 'rounded-[2rem]', 'py-4', 'px-16', 'border-2', 'border-[#a29495]', 'bg-white');
+      button.classList.add('flex','items-center', 'bottom-0', 'right-1/2', 'rounded-[2rem]', 'py-4', 'px-12', 'border-2', 'border-[#a29495]', 'bg-white');
 
       const icon = document.createElement('img');
       icon.src = '/assets/images/icon-add-to-cart.svg';
@@ -40,10 +42,11 @@ customElements.define('product-card',
 			label.classList.add('pl-1.5', 'text-lg', 'font-semibold', 'whitespace-nowrap')
       
       button.append(icon, label);
-      header.append(button);
+      buttonContainer.append(button);
+      header.append(buttonContainer);
 
       const productText = document.createElement('div');
-      productText.classList.add('product-body', 'flex', 'flex-col', 'mt-12', 'text-2xl');
+      productText.classList.add('product-body', 'flex', 'flex-col', 'mt-10', 'text-2xl');
 			
       const category = document.createElement('span');
       category.classList.add('product-category'); 
@@ -57,6 +60,7 @@ customElements.define('product-card',
 
       const price = document.createElement('span');
       price.classList.add('product-price');
+      // price.innerText = '€' + priceValue.toFixed(2);
       price.innerText = '€' + priceValue;
       price.classList.add('font-semibold', 'text-[#C73B0F]');
 

@@ -16,9 +16,12 @@ fetch("http://127.0.0.1:5500/data.json", { method: "GET" })
       image.src = item.image.mobile;
       image.alt = item.name;
       header.append(image);
+
+			const buttonContainer = document.createElement('div');
+      buttonContainer.classList.add('absolute', 'flex', 'justify-center', 'bottom-0', 'translate-y-1/2', 'w-full');
       
       const button = document.createElement('button');
-      button.classList.add('flex','items-center', 'bottom-0', 'right-1/2', 'rounded-[2rem]', 'py-4', 'px-16', 'border-2', 'border-[#a29495]', 'bg-white');
+      button.classList.add('flex','items-center', 'bottom-0', 'right-1/2', 'rounded-[2rem]', 'py-4', 'px-12', 'border-2', 'border-[#a29495]', 'bg-white');
 
       const icon = document.createElement('img');
       icon.src = '/assets/images/icon-add-to-cart.svg';
@@ -30,10 +33,11 @@ fetch("http://127.0.0.1:5500/data.json", { method: "GET" })
 			label.classList.add('pl-1.5', 'text-lg', 'font-semibold', 'whitespace-nowrap')
       
       button.append(icon, label);
-      header.append(button);
+      buttonContainer.append(button);
+      header.append(buttonContainer);
 
       const productText = document.createElement('div');
-      productText.classList.add('product-body', 'flex', 'flex-col', 'mt-12', 'text-2xl');
+      productText.classList.add('product-body', 'flex', 'flex-col', 'mt-10', 'text-2xl');
 			
       const category = document.createElement('span');
       category.classList.add('product-category'); 
