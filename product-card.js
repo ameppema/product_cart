@@ -2,14 +2,16 @@ customElements.define('product-card',
   class extends HTMLElement {
     constructor() {
       super();
-
-			console.log(this.attributes.name.value)
-			const categoryValue = this.attributes.category.value
-
+      // const shadowRoot = this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
       // const template = document.getElementById('element-details-template').content;
 
-      // const shadowRoot = this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
-			const document2 = this.attachShadow({mode: 'open'})
+			const nameValue = this.attributes.name.value
+			const categoryValue = this.attributes.category.value
+			const imageValue = this.attributes.image.value
+			const priceValue = this.attributes.price.value
+
+			this.textContent = "Hola"
+			
 			
 			// Inicio de tarjeta de producto
 			const product = document.createElement('div');
@@ -21,8 +23,8 @@ customElements.define('product-card',
       
       const image = document.createElement('img');
 			image.classList.add('rounded-2xl');
-      image.src = item.image.mobile;
-      image.alt = item.name;
+      image.src = imageValue;
+      image.alt = nameValue;
       header.append(image);
       
       const button = document.createElement('button');
@@ -45,25 +47,24 @@ customElements.define('product-card',
 			
       const category = document.createElement('span');
       category.classList.add('product-category'); 
-      category.innerText = item.category;
+      category.innerText = categoryValue;
       category.classList.add('text-[#958887]');
 
       const name = document.createElement('span');
       name.classList.add('product-name'); 
-      name.innerText = item.name;
+      name.innerText = nameValue;
       name.classList.add('font-semibold');
 
       const price = document.createElement('span');
       price.classList.add('product-price');
-      price.innerText = '€' + item.price.toFixed(2);
+      price.innerText = '€' + priceValue;
       price.classList.add('font-semibold', 'text-[#C73B0F]');
 
 			productText.append(category, name, price);
 
       product.append(productText);
-			// Fin de tarjeta de producto
+			// Fin de tarjeta de producto		
 
-			console.log(document2)
-			console.log(this.attributes.id.value)
+			this.append(product)
   	}
 });
