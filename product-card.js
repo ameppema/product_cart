@@ -1,10 +1,18 @@
-fetch("http://127.0.0.1:5500/data.json", { method: "GET" })
-  .then((response) => response.json())
-  .then((result) => {
-    const productsContainer = document.querySelector('.products');
-    
-    result.forEach(item => {
-      const product = document.createElement('div');
+customElements.define('product-card',
+  class extends HTMLElement {
+    constructor() {
+      super();
+
+			console.log(this.attributes.name.value)
+			const categoryValue = this.attributes.category.value
+
+      // const template = document.getElementById('element-details-template').content;
+
+      // const shadowRoot = this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
+			const document2 = this.attachShadow({mode: 'open'})
+			
+			// Inicio de tarjeta de producto
+			const product = document.createElement('div');
       product.classList.add('product', 'p-8', 'inline-block');
 
       const header = document.createElement('div');
@@ -18,7 +26,7 @@ fetch("http://127.0.0.1:5500/data.json", { method: "GET" })
       header.append(image);
       
       const button = document.createElement('button');
-      button.classList.add('flex','items-center', 'bottom-0', 'right-1/2', 'rounded-[2rem]', 'py-4', 'px-16', 'border-2', 'border-[#a29495]', 'bg-white');
+      button.classList.add('absolute', 'flex','items-center', 'bottom-0', 'right-1/2','translate-x-1/2', 'translate-y-1/2', 'rounded-[2rem]', 'py-4', 'px-16', 'border-2', 'border-[#a29495]', 'bg-white');
 
       const icon = document.createElement('img');
       icon.src = '/assets/images/icon-add-to-cart.svg';
@@ -53,10 +61,9 @@ fetch("http://127.0.0.1:5500/data.json", { method: "GET" })
 			productText.append(category, name, price);
 
       product.append(productText);
+			// Fin de tarjeta de producto
 
-      productsContainer.append(product);
-    });
-
-    // console.log(result);
-  })
-  .catch((error) => console.error('Error fetching data:', error));
+			console.log(document2)
+			console.log(this.attributes.id.value)
+  	}
+});
