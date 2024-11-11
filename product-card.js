@@ -4,7 +4,7 @@ customElements.define('product-card',
       super();
       // const shadowRoot = this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
       // const template = document.getElementById('element-details-template').content;
-
+console.log(this.attributes)
 			const nameValue = this.attributes.name.value
 			const categoryValue = this.attributes.category.value
 			const imageValue = this.attributes.image.value
