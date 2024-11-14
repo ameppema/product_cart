@@ -2,17 +2,14 @@ customElements.define('product-card',
   class extends HTMLElement {
     constructor() {
       super();
-      // const shadowRoot = this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
-      // const template = document.getElementById('element-details-template').content;
-console.log(this.attributes)
+  	}
+
+		connectedCallback() {
 			const nameValue = this.attributes.name.value
 			const categoryValue = this.attributes.category.value
 			const imageValue = this.attributes.image.value
 			const priceValue = this.attributes.price.value
 
-			// this.textContent = "Hola"
-			
-			// Inicio de tarjeta de producto
 			const product = document.createElement('div');
       product.classList.add('product', 'p-8', 'inline-block');
 
@@ -60,15 +57,13 @@ console.log(this.attributes)
 
       const price = document.createElement('span');
       price.classList.add('product-price');
-      // price.innerText = '€' + priceValue.toFixed(2);
-      price.innerText = '€' + priceValue;
+      price.innerText = '€' + Number(priceValue).toFixed(2);
       price.classList.add('font-semibold', 'text-[#C73B0F]');
 
 			productText.append(category, name, price);
-
       product.append(productText);
-			// Fin de tarjeta de producto		
+			
 
 			this.append(product)
-  	}
+		}
 });
