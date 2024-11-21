@@ -27,7 +27,26 @@ customElements.define('product-card',
       buttonContainer.classList.add('absolute', 'flex', 'justify-center', 'bottom-0', 'translate-y-1/2', 'w-full');
       
       const button = document.createElement('button');
-      button.classList.add('flex','items-center', 'bottom-0', 'right-1/2', 'rounded-[2rem]', 'py-4', 'px-12', 'border-2', 'border-[#a29495]', 'bg-white');
+      button.classList.add('flex','items-center', 'rounded-[2rem]', 'py-4', 'px-12', 'border-2', 'border-[#a29495]', 'bg-white');
+    
+			button.addEventListener('click', (event) => {
+				const buttonCart = document.createElement('button');
+      	buttonCart.classList.add('absolute', 'flex','items-center', 'rounded-[2rem]', 'py-4', 'px-12', 'border-2', 'border-[#a29495]', 'bg-white');
+				buttonCart.style.width = button.offsetWidth + 'px'
+				buttonCart.style.height = button.offsetHeight + 'px'
+				buttonCart.innerText = 'Hola'
+
+				const iconIncrement = document.createElement('img');
+				iconIncrement.src = '/assets/images/icon-increment-quantity.svg';
+				
+				const iconDecrement = document.createElement('img');
+				iconIncrement.src = '/assets/images/icon-decrement-quantity.svg';
+
+				buttonContainer.append(buttonCart);
+
+				console.log(button.offsetWidth)
+				console.log(button.offsetHeight)
+			})
 
       const icon = document.createElement('img');
       icon.src = '/assets/images/icon-add-to-cart.svg';

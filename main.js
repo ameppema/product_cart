@@ -6,7 +6,7 @@ fetch("http://127.0.0.1:5500/data.json", { method: "GET" })
 		result.forEach(item => {
 			const productCard = document.createElement('product-card')
 
-			productCard.attributes.name = item.name
+			productCard.setAttribute('name', item.name)
 			productCard.setAttribute('category', item.category)
 			productCard.setAttribute('image', item.image.mobile)
 			productCard.setAttribute('price', item.price)
