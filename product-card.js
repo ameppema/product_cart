@@ -18,7 +18,7 @@ customElements.define('product-card',
       product.append(header);
       
       const image = document.createElement('img');
-			image.classList.add('rounded-2xl');
+			image.classList.add('rounded-2xl', 'border-4', 'border-white');
       image.src = imageValue;
       image.alt = nameValue;
       header.append(image);
@@ -30,22 +30,43 @@ customElements.define('product-card',
       button.classList.add('flex','items-center', 'rounded-[2rem]', 'py-4', 'px-12', 'border-2', 'border-[#a29495]', 'bg-white');
     
 			button.addEventListener('click', (event) => {
+				image.classList.add('border-4', 'border-[#C73B0F]');
+
 				const buttonCart = document.createElement('button');
-      	buttonCart.classList.add('absolute', 'flex','items-center', 'rounded-[2rem]', 'py-4', 'px-12', 'border-2', 'border-[#a29495]', 'bg-white');
+      	buttonCart.classList.add('absolute', 'flex','items-center', 'rounded-[2rem]', 'py-4', 'border-2', 'border-[#C73B0F]', 'bg-[#C73B0F]', 'justify-between', 'px-4');
 				buttonCart.style.width = button.offsetWidth + 'px'
 				buttonCart.style.height = button.offsetHeight + 'px'
-				buttonCart.innerText = 'Hola'
+
+				const iconContainIncrement = document.createElement('div');
+				iconContainIncrement.classList.add('w-8', 'h-8', 'rounded-full', 'border-2', 'border-[#fff]', 'flex', 'items-center', 'justify-center')
+				
+				const iconContainDecrement = document.createElement('div');
+				iconContainDecrement.classList.add('w-8', 'h-8', 'rounded-full', 'border-2', 'border-[#fff]', 'flex', 'items-center', 'justify-center')
 
 				const iconIncrement = document.createElement('img');
+				iconIncrement.classList.add('w-3', 'h-3')
 				iconIncrement.src = '/assets/images/icon-increment-quantity.svg';
 				
 				const iconDecrement = document.createElement('img');
-				iconIncrement.src = '/assets/images/icon-decrement-quantity.svg';
+				iconDecrement.classList.add('w-3', 'h-3')
+				iconDecrement.src = '/assets/images/icon-decrement-quantity.svg';
 
+				const countProduct = document.createElement('span')
+				countProduct.classList.add('text-white', 'text-xl', 'font-semibold')
+				countProduct.innerText = '1'
+
+				iconContainIncrement.append(iconIncrement);
+				iconContainDecrement.append(iconDecrement);
+				buttonCart.append(iconContainDecrement, countProduct, iconContainIncrement);
 				buttonContainer.append(buttonCart);
 
-				console.log(button.offsetWidth)
-				console.log(button.offsetHeight)
+				iconContainIncrement.addEventListener('click', (event) => {
+					console.log('Increment')
+				})
+				
+				iconContainDecrement.addEventListener('click', (event) => {
+					console.log('Decrement')
+				})
 			})
 
       const icon = document.createElement('img');
